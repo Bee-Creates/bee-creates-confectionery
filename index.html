@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bee Creates Confectionery – Creating Your Craved Delights</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --orange: #E8521A;
+    --orange-light: #F5813A;
+    --orange-pale: #FDE8D8;
+    --gold: #D4A017;
+    --cream: #FFF8F0;
+    --dark: #1A0A00;
+    --text: #3D1A00;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  header {
+    background: linear-gradient(135deg, var(--orange) 0%, #C03A0A 60%, var(--dark) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 1rem;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeDown 0.9s ease both;
+  }
+
+  .logo-icon {
+    width: 110px;
+    height: 110px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    border: 4px solid var(--gold);
+  }
+
+  .logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  .logo-title span { color: var(--gold); }
+
+  .logo-sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    color: rgba(255,255,255,0.85);
+    margin-top: 0.25rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  }
+
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 0.9rem 2.2rem;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+  .scroll-down {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8rem;
+    animation: bounce 2s infinite;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    background: var(--dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 2rem;
+    gap: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: var(--orange);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-sub {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  /* ===== ABOUT ===== */
+  #about {
+    background: var(--white);
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    max-width: 850px;
+    margin: 3rem auto;
+    box-shadow: 0 4px 32px rgba(232,82,26,0.08);
+    text-align: center;
+  }
+
+  #about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  /* ===== MENU / ORDER ===== */
+  #order { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .menu-card {
+    background: var(--white);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(232,82,26,0.2);
+    border-color: var(--orange-light);
+  }
+
+  .menu-card.selected {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(232,82,26,0.15);
+  }
+
+  .card-img {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    background: var(--orange-pale);
+    position: relative;
+  }
+
+  .card-body { padding: 1.2rem 1.2rem 1.5rem; }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .card-desc {
+    font-size: 0.88rem;
+    color: #888;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .card-price {
+    font-weight: 800;
+    color: var(--orange);
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-qty {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .qty-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    background: transparent;
+    color: var(--orange);
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qty-btn:hover { background: var(--orange); color: var(--white); }
+
+  .qty-val {
+    font-weight: 800;
+    font-size: 1.05rem;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .add-btn {
+    margin-left: auto;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 0.4rem 1.1rem;
+    font-weight: 800;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .add-btn:hover { background: var(--orange-light); }
+  .add-btn.added { background: #2ecc71; }
+
+  /* ===== CART ===== */
+  #cart-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    background: var(--dark);
+    color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 200;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  #cart-bar.visible { transform: translateY(0); }
+
+  #cart-summary { font-size: 0.95rem; }
+  #cart-summary strong { color: var(--gold); font-size: 1.1rem; }
+
+  #cart-order-btn {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    white-space: nowrap;
+  }
+
+  #cart-order-btn:hover { transform: scale(1.04); }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 2rem;
+    padding: 2.5rem 2rem;
+    max-width: 520px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(30px);
+    transition: transform 0.3s;
+  }
+
+  .modal-overlay.open .modal { transform: translateY(0); }
+
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--orange);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--orange-pale);
+    font-size: 0.95rem;
+  }
+
+  .modal-total {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--orange);
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .modal input, .modal textarea, .modal select {
+    width: 100%;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.75rem;
+    padding: 0.8rem 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .modal input:focus, .modal textarea:focus, .modal select:focus { border-color: var(--orange); }
+
+  .modal textarea { resize: vertical; min-height: 80px; }
+
+  .modal-btns { display: flex; gap: 1rem; margin-top: 0.5rem; }
+
+  .btn-send {
+    flex: 1;
+    background: #25D366;
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.2s;
+  }
+
+  .btn-send:hover { background: #1aad54; }
+
+  .btn-cancel {
+    background: #f0f0f0;
+    color: var(--text);
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-cancel:hover { background: #e0e0e0; }
+
+  /* ===== PRICING ===== */
+  #pricing { background: linear-gradient(135deg, var(--orange) 0%, #C03A0A 100%); padding: 4rem 1.5rem; }
+  #pricing .section-title { color: var(--white); }
+  #pricing .section-sub { color: rgba(255,255,255,0.8); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    color: var(--white);
+  }
+
+  .pricing-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  .pricing-card ul { list-style: none; }
+  .pricing-card li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+  }
+  .pricing-card li span { font-weight: 700; color: var(--gold); }
+
+  /* ===== CONTACT ===== */
+  #contact-section {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    background: var(--white);
+  }
+
+  .contact-box {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--orange-pale);
+    border-radius: 2rem;
+    padding: 2.5rem 2rem;
+    border: 2px solid var(--orange-light);
+  }
+
+  .contact-box p { font-size: 1rem; margin-bottom: 0.5rem; }
+  .contact-box a { color: var(--orange); font-weight: 800; text-decoration: none; font-size: 1.2rem; }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .social-btn {
+    background: var(--orange);
+    color: var(--white);
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .social-btn:hover { background: var(--dark); }
+  .social-btn.wa { background: #25D366; }
+  .social-btn.wa:hover { background: #1aad54; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  footer strong { color: var(--gold); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(-8px); }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0.7rem 1rem; }
+    .nav-links { gap: 0.8rem; }
+    .menu-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .card-img { height: 120px; font-size: 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header id="home">
+  <div class="logo-wrap">
+    <div class="logo-icon">🍯</div>
+    <h1 class="logo-title">Bee <span>Creates</span><br/>Confectionery</h1>
+    <p class="logo-sub">Creating your craved delights</p>
+  </div>
+  <div class="hero-btns">
+    <a href="#order" class="btn-primary">🛒 Order Now</a>
+    <a href="#pricing" class="btn-outline">📋 View Prices</a>
+  </div>
+  <div class="scroll-down">
+    <span>Scroll down</span>
+    <span style="font-size:1.4rem">↓</span>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Bee Creates 🍯</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#pricing">Prices</a></li>
+    <li><a href="#contact-section">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ABOUT -->
+<div id="about" style="max-width:850px;margin:3rem auto;padding:3rem 2rem;background:#fff;border-radius:2rem;box-shadow:0 4px 32px rgba(232,82,26,0.08);text-align:center;">
+  <h2 class="section-title" style="margin-bottom:0.5rem;">Who We Are</h2>
+  <p class="section-sub" style="margin-bottom:1.5rem;">Your favourite confectionery brand</p>
+  <p style="font-size:1.1rem;line-height:1.8;color:#3D1A00;max-width:650px;margin:0 auto;">
+    At <strong>Bee Creates Confectionery</strong>, we craft mouth-watering Nigerian snacks and pastries that hit your taste buds just right. From crispy Samosas and golden Puff-puff to crunchy Chin-chin and juicy Peppered Meat — every bite is made with love, fresh ingredients, and a commitment to quality. Perfect for events, celebrations, and everyday cravings!
+  </p>
+</div>
+
+<!-- ORDER -->
+<section id="order">
+  <h2 class="section-title">Order Your Favourites</h2>
+  <p class="section-sub">Click on any item, pick your quantity, and place your order!</p>
+
+  <div class="menu-grid" id="menu-grid"></div>
+
+  <div style="text-align:center;margin-top:2.5rem;">
+    <button class="btn-primary" id="view-cart-btn" style="display:none;" onclick="openModal()">🛒 View Cart & Order</button>
+  </div>
+</section>
+
+<!-- PRICING -->
+<div id="pricing" style="padding:4rem 1.5rem;background:linear-gradient(135deg,#E8521A 0%,#C03A0A 100%);">
+  <h2 class="section-title" style="color:#fff;">Celebration Menu & Pricing</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,0.8);">Bulk orders welcome — customizable to preference!</p>
+  <div class="pricing-grid">
+
+    <div class="pricing-card">
+      <h3>🥟 Small Chops</h3>
+      <ul>
+        <li>Mini Pack (1 samosa, 1 springroll, 4 puff-puff, 1 peppered beef) <span>₦1,450</span></li>
+        <li>Puff-puff (4 pieces) <span>₦250</span></li>
+        <li>Puff & Beef Kebab (per stick) <span>₦800</span></li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <h3>🎉 Platter Packages</h3>
+      <ul>
+        <li>5 beef, 5 samosa, 5 springroll, 20 puff-puff <span>₦7,500</span></li>
+        <li>10 beef, 10 samosa, 10 springroll, 20 puff-puff <span>₦13,000</span></li>
+        <li>10 beef, 10 samosa, 10 springroll, 40 puff-puff <span>₦14,500</span></li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <h3>🫙 Chin-chin – Jars</h3>
+      <ul>
+        <li>1KG <span>₦6,800</span></li>
+        <li>1.5KG <span>₦10,000</span></li>
+        <li>2KG <span>₦13,500</span></li>
+        <li>3KG <span>₦20,000</span></li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <h3>🍪 Chin-chin – Pouches</h3>
+      <ul>
+        <li>Plastic Bottle (75cl) <span>₦2,500</span></li>
+        <li>Small Pouch <span>₦600</span></li>
+        <li>Big Pouch <span>₦1,300</span></li>
+        <li>Mini Packs (₦100–₦500) <span>From ₦100</span></li>
+      </ul>
+    </div>
+
+  </div>
+  <p style="color:rgba(255,255,255,0.75);text-align:center;margin-top:2rem;font-size:0.9rem;">MOQ = Minimum Order Quantity. Orders can be customized to preference.</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact-section" style="text-align:center;padding:4rem 1.5rem;background:#fff;">
+  <h2 class="section-title">Get In Touch</h2>
+  <p class="section-sub">We'd love to hear from you!</p>
+  <div class="contact-box">
+    <p>📞 Call / WhatsApp us:</p>
+    <a href="tel:09018999125">09018999125</a>
+    <div class="social-links">
+      <a href="https://wa.me/2349018999125" target="_blank" class="social-btn wa">💬 WhatsApp</a>
+      <a href="https://www.facebook.com/share/1GcvJzACCv/" target="_blank" class="social-btn">📘 Facebook</a>
+      <a href="https://www.tiktok.com/@beecreatesconfectionery" target="_blank" class="social-btn" style="background:#010101;">🎵 TikTok</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Bee Creates Confectionery</strong> · Creating Your Craved Delights 🍯</p>
+  <p style="margin-top:0.4rem;">Lokoja, Nigeria · 09018999125</p>
+</footer>
+
+<!-- CART BAR -->
+<div id="cart-bar">
+  <div id="cart-summary">🛒 <strong id="cart-count">0</strong> items · <strong id="cart-total">₦0</strong></div>
+  <button id="cart-order-btn" onclick="openModal()">Place Order via WhatsApp →</button>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h2>🛒 Your Order</h2>
+    <div id="modal-items"></div>
+    <div class="modal-total">
+      <span>Total</span>
+      <span id="modal-total-price">₦0</span>
+    </div>
+    <input type="text" id="cust-name" placeholder="Your Name *" required/>
+    <input type="tel" id="cust-phone" placeholder="Your Phone Number *" required/>
+    <select id="delivery-type">
+      <option value="">Delivery or Pickup?</option>
+      <option value="Delivery">Delivery</option>
+      <option value="Pickup">Pickup</option>
+    </select>
+    <input type="text" id="cust-address" placeholder="Delivery Address (if delivery)"/>
+    <textarea id="cust-note" placeholder="Any special requests or notes?"></textarea>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">✕ Cancel</button>
+      <button class="btn-send" onclick="sendWhatsApp()">💬 Send via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PHONE = '2349018999125';
+
+  const products = [
+    { id: 1,  emoji: '🥐', name: 'Puff-puff',        desc: 'Soft, fluffy deep-fried dough balls. Classic Nigerian favourite.',   price: 250,  unit: '4 pieces' },
+    { id: 2,  emoji: '🥟', name: 'Samosa',            desc: 'Golden crispy pastry filled with spiced potato & meat filling.',      price: 300,  unit: 'per piece' },
+    { id: 3,  emoji: '🌯', name: 'Spring Roll',       desc: 'Crunchy golden rolls packed with savoury vegetable & meat filling.',  price: 300,  unit: 'per piece' },
+    { id: 4,  emoji: '🍪', name: 'Chin-chin',         desc: 'Crunchy fried dough snack — sweet, addictive, and irresistible.',     price: 600,  unit: 'small pouch' },
+    { id: 5,  emoji: '🥩', name: 'Peppered Meat',     desc: 'Juicy beef seasoned with fiery Nigerian pepper sauce.',               price: 800,  unit: 'per stick' },
+    { id: 6,  emoji: '🎂', name: 'Cupcakes',          desc: 'Soft, moist cupcakes beautifully frosted for any occasion.',          price: 500,  unit: 'per piece' },
+    { id: 7,  emoji: '🎉', name: 'Mini Pack',         desc: '1 samosa, 1 springroll, 4 puff-puff, 1 peppered beef — perfect combo!', price: 1450, unit: 'per pack' },
+    { id: 8,  emoji: '🫙', name: 'Chin-chin Jar (1kg)', desc: 'Generous 1kg jar of our signature crunchy chin-chin.',            price: 6800, unit: '1kg jar' },
+    { id: 9,  emoji: '🎊', name: 'Platter (Small)',   desc: '5 beef, 5 samosa, 5 springroll, 20 puff-puff. Great for events!',   price: 7500, unit: 'platter' },
+    { id: 10, emoji: '🍽️', name: 'Platter (Large)',   desc: '10 beef, 10 samosa, 10 springroll, 40 puff-puff. Party ready!',    price: 14500, unit: 'platter' },
+  ];
+
+  const cart = {};
+
+  function renderMenu() {
+    const grid = document.getElementById('menu-grid');
+    grid.innerHTML = products.map(p => `
+      <div class="menu-card" id="card-${p.id}">
+        <div class="card-img">${p.emoji}</div>
+        <div class="card-body">
+          <div class="card-name">${p.name}</div>
+          <div class="card-desc">${p.desc}</div>
+          <div class="card-price">₦${p.price.toLocaleString()} <small style="font-weight:400;color:#aaa;">/ ${p.unit}</small></div>
+          <div class="card-qty">
+            <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
+            <span class="qty-val" id="qty-${p.id}">0</span>
+            <button class="qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
+            <button class="add-btn" id="add-${p.id}" onclick="addToCart(${p.id})">Add</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function changeQty(id, delta) {
+    const el = document.getElementById(`qty-${id}`);
+    let val = parseInt(el.textContent) + delta;
+    if (val < 0) val = 0;
+    el.textContent = val;
+  }
+
+  function addToCart(id) {
+    const qty = parseInt(document.getElementById(`qty-${id}`).textContent);
+    if (qty === 0) { alert('Please select a quantity first!'); return; }
+    const p = products.find(x => x.id === id);
+    cart[id] = { ...p, qty: (cart[id]?.qty || 0) + qty };
+    document.getElementById(`qty-${id}`).textContent = '0';
+    const btn = document.getElementById(`add-${id}`);
+    btn.textContent = '✓ Added';
+    btn.classList.add('added');
+    setTimeout(() => { btn.textContent = 'Add'; btn.classList.remove('added'); }, 1500);
+    document.getElementById(`card-${id}`).classList.add('selected');
+    setTimeout(() => document.getElementById(`card-${id}`).classList.remove('selected'), 600);
+    updateCartBar();
+  }
+
+  function updateCartBar() {
+    const items = Object.values(cart);
+    const count = items.reduce((s, i) => s + i.qty, 0);
+    const total = items.reduce((s, i) => s + i.qty * i.price, 0);
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('cart-total').textContent = '₦' + total.toLocaleString();
+    const bar = document.getElementById('cart-bar');
+    const viewBtn = document.getElementById('view-cart-btn');
+    if (count > 0) {
+      bar.classList.add('visible');
+      viewBtn.style.display = 'inline-block';
+    } else {
+      bar.classList.remove('visible');
+      viewBtn.style.display = 'none';
+    }
+  }
+
+  function openModal() {
+    const items = Object.values(cart);
+    if (items.length === 0) { alert('Your cart is empty! Add some items first.'); return; }
+    const total = items.reduce((s, i) => s + i.qty * i.price, 0);
+    document.getElementById('modal-items').innerHTML = items.map(i => `
+      <div class="modal-item">
+        <span>${i.emoji} ${i.name} × ${i.qty}</span>
+        <span>₦${(i.qty * i.price).toLocaleString()}</span>
+      </div>
+    `).join('');
+    document.getElementById('modal-total-price').textContent = '₦' + total.toLocaleString();
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function sendWhatsApp() {
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const delivery = document.getElementById('delivery-type').value;
+    const address = document.getElementById('cust-address').value.trim();
+    const note = document.getElementById('cust-note').value.trim();
+
+    if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+
+    const items = Object.values(cart);
+    const total = items.reduce((s, i) => s + i.qty * i.price, 0);
+
+    let msg = `🍯 *New Order – Bee Creates Confectionery*\n\n`;
+    msg += `👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n`;
+    if (delivery) msg += `🚚 *${delivery}*\n`;
+    if (address) msg += `📍 *Address:* ${address}\n`;
+    msg += `\n*Order Details:*\n`;
+    items.forEach(i => {
+      msg += `• ${i.emoji} ${i.name} × ${i.qty} = ₦${(i.qty * i.price).toLocaleString()}\n`;
+    });
+    msg += `\n💰 *Total: ₦${total.toLocaleString()}*\n`;
+    if (note) msg += `\n📝 *Note:* ${note}`;
+
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+    closeModal();
+  }
+
+  document.getElementById('modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  renderMenu();
+</script>
+</body>
+</html>
